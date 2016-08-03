@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpStepFilterConfiguration">
+    <option name="skippedFunctions">
+      <list>
+        <option value="Illuminate\Database\Eloquent\Model-&gt;save" />
+        <option value="App\Http\Controllers\CaseController-&gt;store" />
+        <option value="GuzzleHttp\Message\AbstractMessage-&gt;getBody" />
+        <option value="App\Http\Controllers\TestController-&gt;index" />
+        <option value="Illuminate\Support\Facades\Facade::__callStatic" />
+        <option value="App\Http\Controllers\Import\ImportController-&gt;postImportProcess" />
+        <option value="Illuminate\Support\Facades\Facade::getFacadeRoot" />
+      </list>
+    </option>
+  </component>
+</project>

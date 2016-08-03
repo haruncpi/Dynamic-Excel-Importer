@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="abe7768d-25cf-4666-9fad-08e123689d84" name="ACL-Hatazari(aclandhathazari.gov.bd)" url="http://192.145.233.170">
+        <fileTransfer host="192.145.233.170" port="21" rootFolder="/public_html" password="dfd2dfc1df9adff8df92df9adf9edfc3dfc0dfe2" username="aclandha">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

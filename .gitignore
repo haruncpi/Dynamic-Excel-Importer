@@ -1,0 +1,4 @@
+/vendor/*
+/storage/logs/*
+/storage/framework/views/*
+/storage/framework/sessions/*
