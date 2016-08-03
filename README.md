@@ -11,6 +11,9 @@ Let's see what we can do
 5. Import data by mapping table column.
 6. Ajax functionality.
 
+## Screenshot
+[dxi_home]: https://github.com/haruncpi/Dynamic-Excel-Importer/raw/master/public/images/screenshot/dxi_home.png "dxi_home"
+[dxi_import]: https://github.com/haruncpi/Dynamic-Excel-Importer/raw/master/public/images/screenshot/dxi_import.png "dxi_import"
 ## How to use?
  Git clone this repository
 ```
