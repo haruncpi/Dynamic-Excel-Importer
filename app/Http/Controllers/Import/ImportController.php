@@ -4,11 +4,13 @@ use App\Http\Controllers\DBC;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Excel;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 use Log;
-use Session;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ImportController extends Controller
 {
@@ -17,16 +19,34 @@ class ImportController extends Controller
     {
         return view('home');
     }
+
     public function import()
     {
         return view('import');
     }
 
-    public function postImport()
+    public function postImport(Request $r)
     {
 
-        $file = Input::file('file');
+        $file = $r->file('file');
         $ext = $file->guessClientExtension();    // get file extension
+
+        $db = $r->get('database');
+        $tbl = $r->get('table');
+
+        $conn = DBC::connection();
+        mysqli_select_db($conn, $db);
+        $res = mysqli_query($conn, "SHOW COLUMNS FROM " . $tbl . "");
+
+        $dataArr = [];
+        while ($row = mysqli_fetch_assoc($res)) {
+            array_push($dataArr, $row['Field']);
+        }
+        DBC::dbClose();
+
+        Session::put('database', $db);
+        Session::put('table', $tbl);
+        Session::put('table_fields', $dataArr);
 
         switch ($ext) {
             case 'xls':
@@ -38,27 +58,19 @@ class ImportController extends Controller
                     Session::put('upload_results', $tempResults);
                 });
                 // end parsing data
-                $results = Session::get('upload_results'); // get all excel data into a variable from session
 
-                $fileColumns = array_keys($results[0]);      // xls file columns
-
-                $db = Input::get('database');
-                $tbl = Input::get('table');
-
-                $conn = DBC::connection();
-                mysqli_select_db($conn, $db);
-                $res = mysqli_query($conn, "SHOW COLUMNS FROM " . $tbl . "");
-
-                $dataArr = [];
-                while ($row = mysqli_fetch_assoc($res)) {
-                    array_push($dataArr, $row['Field']);
-                }
-                DBC::dbClose();
-
-                Session::put('database', $db);
-                Session::put('table', $tbl);
-                Session::put('table_fields', $dataArr);
                 return view('partial.data');
+                break;
+            case 'json':
+                //parsing data
+                $content = file_get_contents($file);
+                $jsonData = json_decode($content, true);
+
+                Session::put('upload_results', $jsonData);
+
+                return view('partial.data');
+                // end parsing data
+                break;
         }
         //end of switch
     }

@@ -72,6 +72,7 @@
                     case 'xls':
                     case 'csv':
                     case 'xlsx':
+                    case 'json':
                         console.log(extension);
                         $('select[name="database"]').removeAttr("disabled");
                         break;

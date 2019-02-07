@@ -17,11 +17,10 @@
             <form method="post" action="{{route('importProcessRoute')}}" id="data-process-form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                <div class="well well-sm">
+                <div class="well well-sm" style="margin-bottom: 0px;">
                     <div class="btn-group pull-right">
                         <button class="btn btn-success btn-sm" type="submit">PROCESS</button>
                     </div>
-
 
                     <p><i class="fa fa-info-circle"></i> Total Row Found In Sheet : {{count($mainResults)}} <br>
                         <i class="fa fa-database"></i> Database: {{$database}}<br>
@@ -29,6 +28,11 @@
                     </p>
                 </div>
 
+                <div class="well well-sm" style="margin-bottom: 1px;background: #8BC34A;color: white;">
+                    <i class="fa fa-info-circle"></i> Here showing first {{count($results)}} records
+                    of {{count($mainResults)}}. {{count($mainResults)}} row will be insert in your
+                    <strong>{{$table}}</strong> table of <strong>{{$database}}</strong> database
+                </div>
                 <table class="table table-bordered table-condensed">
 
                     <thead>
@@ -38,7 +42,7 @@
                             <th>
                                 {{$column}} <br>
                                 <select name="{{$column}}" class="form-control input-sm">
-                                    <option value="">--Select--</option>
+                                    <option value="">--Select table field--</option>
                                     @foreach($tableFields as $field)
                                         <option value="{{$field}}">{{$field}}</option>
                                     @endforeach
@@ -70,3 +74,6 @@
         @endif
     </div>
 </div>
+<br>
+<br>
+<br>

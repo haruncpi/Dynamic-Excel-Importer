@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?php echo csrf_token() ?>"/>
-    <title>Dynamic Excel Importer 1.0</title>
+    <title>Dynamic Excel Importer 2.0</title>
 
     <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/css/select2.css')}}" rel="stylesheet">
@@ -38,7 +38,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><i class="fa fa-file-excel-o"></i> Dynamic Excel Importer 1.0</a>
+            <a class="navbar-brand" href="{{url()}}"><i class="fa fa-file-excel-o"></i> Dynamic Excel Importer 2.0</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
